@@ -318,7 +318,7 @@ def znajdz_najlepsza_lokalizacje(lista_domow):
     return minimum(d)
 
 
-def licznosc_znakow_w_tekscie(napis):
+def licznosc_znakow_w_tekscie_a(napis):
     d = {}
     for litera in napis:
         if litera in d:
@@ -327,7 +327,24 @@ def licznosc_znakow_w_tekscie(napis):
             d[litera] = 1
     return d
 
-txt = 'Ala ma kota'
 
-for i in bla(txt):
-    print(i, bla(txt)[i])
+def licznosc_znakow_w_tekscie_b(napis):
+    d = {}
+    for litera in napis:
+        if 'a' <= litera <= 'z' or 'A' <= litera <= 'Z':
+            if litera in d:
+                d[litera] += 1
+            else:
+                d[litera] = 1
+    return d
+
+
+def licznosc_znakow_w_tekscie_c(napis):
+    d = {}
+    for litera in napis.upper():
+        if 'A' <= litera <= 'Z':
+            if litera in d:
+                d[litera] += 1
+            else:
+                d[litera] = 1
+    return d
