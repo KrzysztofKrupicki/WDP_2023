@@ -270,7 +270,7 @@ def czy_jest_pierwsza(n):
     return True
 
 
-def zadanie_c(n):
+def znajdz_dzielniki_ktore_sa_liczbami_pierwszymi(n):
     odp = []
     dzielniki_n = dzielniki(n)
     for i in dzielniki_n:
@@ -280,9 +280,6 @@ def zadanie_c(n):
 
 
 # 4.12 & 11.12
-lista_domow = [1, 2, 4, 5, 6, 8]
-
-
 def sumaryczna_odleglosc(dom, lista_domow):
     suma = 0
     for i in range(len(lista_domow)):
@@ -347,4 +344,58 @@ def licznosc_znakow_w_tekscie_c(napis):
                 d[litera] += 1
             else:
                 d[litera] = 1
+    return d
+
+
+def licznosc_znakow_w_tekscie_d(napis):
+    d = licznosc_znakow_w_tekscie_c(napis)
+    najczestsza = []
+    for item in d:
+        if d[item] == max(d.values()):
+            najczestsza.append(item)
+    return najczestsza
+
+
+# 18.12
+def liczby_do_slownika():
+    d = {}
+    while True:
+        n = input()
+        if n == '':
+            break
+        if n.isnumeric():
+            if n in d:
+                d[n] += 1
+            else:
+                d[n] = 1
+        else:
+            print('Podaj liczbe')
+    return d
+
+
+def odczyt_pliku_i_liczenie_liter(plik):
+    plik = open(plik).readlines()
+    d = {}
+    for linia in plik:
+        wiersz = linia.strip()
+        for letter in wiersz:
+            if letter.isalpha():
+                if letter in d:
+                    d[letter] += 1
+                else:
+                    d[letter] = 1
+    return d
+
+
+def odczyt_pliku_wybor_i_liczenie_liczb(plik):
+    plik = open(plik).readlines()
+    d = {}
+    for linia in plik:
+        wiersz = linia.strip().split()
+        for item in wiersz:
+            if item.isnumeric():
+                if item in d:
+                    d[item] += 1
+                else:
+                    d[item] = 1
     return d
