@@ -1,8 +1,7 @@
 import random
 
-"""23.10"""
 
-
+# 23.10
 def suma_liczb_naturalnych_od_1_do_n(n):
     suma = 0
     for i in range(n + 1):
@@ -399,3 +398,22 @@ def odczyt_pliku_wybor_i_liczenie_liczb(plik):
                 else:
                     d[item] = 1
     return d
+
+
+# 2.01
+def weryfikacja_hasla(haslo):
+    czy_duza = False
+    czy_cyfra = False
+    for item in haslo:
+        if 'A' <= item <= 'Z':
+            czy_duza = True
+        if item.isnumeric():
+            czy_cyfra = True
+    return czy_duza and czy_cyfra
+
+
+def zamiana_temperatury(wartosc, twoja_jednostka):
+    if twoja_jednostka == 'C':
+        return (wartosc * 9 / 5) + 32
+    if twoja_jednostka == 'F':
+        return (wartosc - 32) * 5 / 9
