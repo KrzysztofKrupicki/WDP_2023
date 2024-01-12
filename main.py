@@ -386,6 +386,7 @@ def odczyt_pliku_i_liczenie_liter(plik):
     return d
 
 
+# dziala dla INT
 def odczyt_pliku_wybor_i_liczenie_liczb(plik):
     plik = open(plik).readlines()
     d = {}
@@ -397,6 +398,24 @@ def odczyt_pliku_wybor_i_liczenie_liczb(plik):
                     d[item] += 1
                 else:
                     d[item] = 1
+    return d
+
+
+# napisac dla FLOAT
+def odczyt_pliku_wybor_i_liczenie_liczb2(plik):
+    plik = open(plik).readlines()
+    d = {}
+    for linia in plik:
+        wiersz = linia.strip().split()
+        for item in wiersz:
+            try:
+                liczba = int(item)
+                if liczba in d:
+                    d[liczba] += 1
+                else:
+                    d[liczba] = 1
+            except:
+                pass
     return d
 
 
@@ -417,3 +436,21 @@ def zamiana_temperatury(wartosc, twoja_jednostka):
         return (wartosc * 9 / 5) + 32
     if twoja_jednostka == 'F':
         return (wartosc - 32) * 5 / 9
+
+
+# 8.01
+def wyznaczanie_liczby_dni_w_miesiacu(rok, miesiac):
+    miesiace_31d = [1, 3, 5, 7, 8, 10, 12]
+    miesiace_30d = [4, 6, 9, 11]
+    if rok % 4 == 0 and rok % 100 != 0 or rok % 400 == 0:
+        if miesiac == 2:
+            return 29
+    if miesiac == 2:
+        return 28
+    for i in miesiace_30d:
+        if i == miesiac:
+            return 30
+    for i in miesiace_31d:
+        if i == miesiac:
+            return 31
+    return 0
